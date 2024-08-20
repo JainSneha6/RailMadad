@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Sidebar from './Sidebar';
 
 const GrievanceDetailForm = () => {
     const [journeyType, setJourneyType] = useState('PNR');
@@ -75,7 +74,6 @@ const GrievanceDetailForm = () => {
 
     return (
         <div className="flex min-h-screen">
-            <Sidebar />
             <div className="w-3/4 bg-white p-8 relative">
                 <h2 className="text-2xl font-semibold mb-4 text-[#800020]">Grievance Detail</h2>
 
