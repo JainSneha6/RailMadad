@@ -1,0 +1,54 @@
+Type,SubType,Priority
+Medical Assistance,Medical Assistance,1
+Security,Eve-teasing/Misbehaviour/Rape,1
+Security,Theft of Passengers Belongings/Snatching,1
+Security,Unauthorized person in Ladies/Disabled Coach/SLR/Reserve Coach Harassment/Extortion by Security Personnel/Railway Personnel,1
+Security,Nuisance by Hawkers/Beggars/Eunuchs/Passengers,2
+Security,Luggage Left Behind/Unclaimed/Suspected Articles,2
+Security,Passenger Missing/Not Responding to Call,1
+Security,Smoking/Drinking Alcohol/Narcotics,3
+Security,Dacoity/Robbery/Murder/Riots,1
+Security,Quarrelling/Hooliganism/Run Over/Passenger Fallen Down,1
+Security,Others,2
+Divyangjan Facilities,Divyangjan Coach Unavailability,2
+Divyangjan Facilities,Divyangjan Toilet/Washbasin,2
+Divyangjan Facilities,Braille Signage in Coach,3
+Divyangjan Facilities,Others,3
+Facilities for Women with Special Needs,Baby Food,2
+Electrical Equipment,Air Conditioner,3
+Electrical Equipment,Fans,3
+Electrical Equipment,Lights,3
+Electrical Equipment,Charging Points,3
+Electrical Equipment,Others,3
+Coach - Cleanliness,Toilet,2
+Coach - Cleanliness,Washbasin,2
+Coach - Cleanliness,Cockroach/Rodents,3
+Coach - Cleanliness,Coach Interior,3
+Coach - Cleanliness,Coach Exterior,3
+Coach - Cleanliness,Others,3
+Punctuality,NTES APP,2
+Punctuality,Late Running,2
+Punctuality,Others,3
+Water Availability,Packaged Drinking Water/Rail Neer,2
+Water Availability,Toilet,2
+Water Availability,Washbasin,2
+Water Availability,Others,3
+Coach - Maintenance,Window/Seat Broken,2
+Coach - Maintenance,Window/Door Locking Problem,2
+Coach - Maintenance,Tap Leaking/Tap Not Working,2
+Coach - Maintenance,Broken/Missing Toilet Fittings,2
+Coach - Maintenance,Jerks/Abnormal Sound,2
+Coach - Maintenance,Others,2
+Catering & Vending Services,Overcharging,3
+Catering & Vending Services,Service Quality & Hygiene,2
+Catering & Vending Services,Food Quality & Quantity,3
+Catering & Vending Services,E-Catering,3
+Catering & Vending Services,Food & Water Not Available,2
+Catering & Vending Services,Others,3
+Staff Behaviour,Staff Behaviour,2
+Corruption / Bribery,Corruption / Bribery,2
+Bed Roll,Dirty / Torn,3
+Bed Roll,Overcharging,3
+Bed Roll,Non Availability,3
+Bed Roll,Others,3
+Miscellaneous,Miscellaneous,3
