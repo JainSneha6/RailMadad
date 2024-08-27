@@ -73,8 +73,8 @@ const GrievanceDetailForm = () => {
     };
 
     return (
-        <div className="flex min-h-screen">
-            <div className="w-3/4 bg-white p-8 relative">
+        <div className="flex">
+            <div className="bg-white relative" style={{width:'650px'}}>
                 <h2 className="text-2xl font-semibold mb-4 text-[#800020]">Grievance Detail</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -203,10 +203,6 @@ const GrievanceDetailForm = () => {
 
                 <div className="absolute top-4 right-4 text-xs text-gray-600">
                     *Mandatory Fields
-                </div>
-
-                <div className="absolute top-4 right-0 bg-blue-500 text-white rounded-full p-2 cursor-pointer">
-                    <i className="fas fa-universal-access"></i>
                 </div>
             </div>
         </div>

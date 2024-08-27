@@ -1,24 +1,24 @@
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import GrievanceDetailForm from "./components/GrievanceForm";
-import Footer from "./components/Footer";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Modal } from './components/Modal';
+import { ModalProvider } from './store/ModalProvider';
+import Home from './pages/HomePage';
+import AdminDashboard from './pages/AdminDashboard'; 
+import GrievanceList from './pages/GrievancesList';
 
 function App() {
-  return (
-    <div
-      className="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(background.png)` }}
-    >
-      <Header />
-      <div className="flex flex-1">
-        <Sidebar />
-        <div className="flex-1 flex justify-end">
-          <GrievanceDetailForm />
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
+    return (
+        <ModalProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/admin-dashboard" element={<AdminDashboard />} /> 
+                    <Route path="/grievances/:type/:name" element={<GrievanceList />} />
+                </Routes>
+                <Modal />
+            </Router>
+        </ModalProvider>
+    );
 }
 
 export default App;
