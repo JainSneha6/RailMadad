@@ -78,8 +78,8 @@ const GrievanceDetailForm = () => {
                 <h2 className="text-2xl font-semibold mb-4 text-[#800020]">Grievance Detail</h2>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="col-span-2">
+                    {/* <div className="grid grid-cols-2 gap-4"> */}
+                        {/* <div className="col-span-2">
                             <label className="block text-sm font-medium mb-1">Mobile No.</label>
                             <div className="flex">
                                 <input
@@ -90,9 +90,9 @@ const GrievanceDetailForm = () => {
                                 />
                                 <button className="bg-[#800020] text-white px-4 py-2 rounded-r">Get OTP</button>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div>
+                        {/* <div>
                             <label className="block text-sm font-medium mb-1">Journey Details</label>
                             <select
                                 className="border border-gray-300 rounded px-4 py-2 w-full"
@@ -107,7 +107,7 @@ const GrievanceDetailForm = () => {
                                 <option value="PNR">PNR</option>
                                 <option value="UTS">UTS</option>
                             </select>
-                        </div>
+                        </div> */}
 
                         {journeyType === 'PNR' && (
                             <div>
@@ -122,7 +122,7 @@ const GrievanceDetailForm = () => {
                             </div>
                         )}
 
-                        {journeyType === 'UTS' && (
+                        {/* {journeyType === 'UTS' && (
                             <>
                                 <div>
                                     <label className="block text-sm font-medium mb-1">UTS No.</label>
@@ -145,8 +145,8 @@ const GrievanceDetailForm = () => {
                                     />
                                 </div>
                             </>
-                        )}
-                    </div>
+                        )} */}
+                    {/* </div> */}
 
                     <div className="mt-4">
                         <label className="block text-sm font-medium mb-1">Incident Date</label>
