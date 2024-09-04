@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import GrievanceTable from './GrievanceTable';
 import TTETable from './TTETable'; // Assuming this is still useful; otherwise, replace with appropriate component.
 
 const GrievancesByStation = () => {
@@ -30,7 +29,7 @@ const GrievancesByStation = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-100 flex-1">
+        <div className="p-6 flex-1">
             <h2 className="text-lg font-bold mb-4">Grievances for Station Master {station_master}</h2>
             {loading && <p>Loading...</p>}
             {!loading && grievances.length > 0 && <TTETable grievances={grievances} />}

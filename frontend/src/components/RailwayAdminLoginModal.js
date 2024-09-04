@@ -13,7 +13,7 @@ const RailwayAdminLoginModal = ({ onClose }) => {
         e.preventDefault();
     
         try {
-            const response = await axios.post('http://localhost:5000/admin_login', {
+            const response = await axios.post('http://localhost:5000/admin/login', {
                 username,
                 password
             });
@@ -44,7 +44,7 @@ const RailwayAdminLoginModal = ({ onClose }) => {
                         <input 
                             type="text" 
                             placeholder="User Id" 
-                            className="w-full p-2 border border-gray-300 rounded" 
+                            className="w-full p-2 border border-gray-300 rounded text-black" 
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -53,7 +53,7 @@ const RailwayAdminLoginModal = ({ onClose }) => {
                         <input 
                             type="password" 
                             placeholder="Password" 
-                            className="w-full p-2 border border-gray-300 rounded" 
+                            className="w-full p-2 border border-gray-300 rounded text-black" 
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

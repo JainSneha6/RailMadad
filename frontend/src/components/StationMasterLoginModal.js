@@ -1,4 +1,3 @@
-// src/components/StationMasterLoginModal.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -11,8 +10,6 @@ const StationMasterLoginModal = ({ onClose }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-
-        // Redirect to the relevant page after login
         navigate(`/station/${name}`);
         onClose();
 

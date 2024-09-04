@@ -35,9 +35,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/AdminDashboardHeader';
 import GrievanceDashboard from './components/AdminDashboard';
-import Chatbot from './components/Chatbot';
 import Home from './pages/HomePage';
 import { ModalProvider } from './store/ModalProvider';
 import GrievanceByTrainNo from './components/TTEDashboard';
@@ -60,16 +58,14 @@ const App = () => {
   return (
     <ModalProvider>
       <Router>
-        <Header />
         <div className="flex flex-col h-screen">
           <div className="flex flex-1">
-            <div className="flex-1 p-6">
+            <div className="flex-1">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/grievance-dashboard" element={<GrievanceDashboard grievances={grievances} />} />
+                <Route path="/admin-dashboard" element={<GrievanceDashboard grievances={grievances} />} />
                 <Route path="/grievances/train/:trainNo" element={<GrievanceByTrainNo />} />
                 <Route path="/station/:station_master" element={<GrievancesByStation />} />
-                <Route path="/chatbot" element={<Chatbot />} />
               </Routes>
             </div>
           </div>

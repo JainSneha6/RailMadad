@@ -15,39 +15,30 @@ const GrievanceByPriority = ({ grievances }) => {
     count: data[key],
   }));
 
-  // Define a color gradient for the bars
-  const gradientOffset = () => {
-    const dataMax = Math.max(...chartData.map(i => i.count));
-    const dataMin = Math.min(...chartData.map(i => i.count));
-
-    if (dataMax <= 0) {
-      return 0;
-    }
-
-    return dataMin / dataMax;
-  };
-
-  const off = gradientOffset();
-
   return (
-    <div className="bg-white p-4 rounded shadow-lg" style={{width:'1600px'}}>
-      <h2 className="text-xl font-semibold mb-4 text-red-600">Grievances by Priority</h2>
+    <div className="bg-gradient-to-br from-green-50 to-green-200 p-6 rounded-lg shadow-xl" style={{ width: '100%', maxWidth: '1800px' }}>
+      <h2 className="text-3xl font-bold mb-6 text-teal-900">Grievances by Priority</h2>
       <ResponsiveContainer width="100%" height={500}>
         <BarChart data={chartData}>
           <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#e53e3e" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#800020" stopOpacity={0.8} />
+            {/* Define a teal gradient for the bars */}
+            <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#34d399" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#065f46" stopOpacity={0.8} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="priority" stroke="#800020" tick={{ fontSize: 14, fontWeight: 'bold' }} />
-          <YAxis stroke="#800020" tick={{ fontSize: 14, fontWeight: 'bold' }} />
-          <Tooltip cursor={{ fill: 'rgba(128, 0, 32, 0.1)' }} contentStyle={{ backgroundColor: '#800020', borderRadius: '10px', color: '#fff' }} />
-          <Legend />
-          <Bar dataKey="count" fill="url(#colorUv)" barSize={70} radius={[10, 10, 0, 0]} animationDuration={1500}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#d1d5db" />
+          <XAxis dataKey="priority" stroke="#065f46" tick={{ fontSize: 14, fontWeight: 'bold' }} />
+          <YAxis stroke="#065f46" tick={{ fontSize: 14, fontWeight: 'bold' }} />
+          <Tooltip 
+            cursor={{ fill: 'rgba(6, 95, 70, 0.1)' }} 
+            contentStyle={{ backgroundColor: '#065f46', borderRadius: '10px', color: '#fff' }} 
+            itemStyle={{ color: '#e5e7eb' }}
+          />
+          <Legend wrapperStyle={{ color: '#065f46' }} />
+          <Bar dataKey="count" fill="url(#colorGradient)" barSize={70} radius={[10, 10, 0, 0]} animationDuration={1500}>
             {chartData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill="url(#colorUv)" />
+              <Cell key={`cell-${index}`} fill="url(#colorGradient)" />
             ))}
           </Bar>
         </BarChart>
