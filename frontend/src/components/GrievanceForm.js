@@ -38,22 +38,21 @@ const GrievanceDetailForm = () => {
 
         setTimeout(async () => {
             const formData = new FormData();
-            formData.append('mobileNo', document.querySelector('input[name="mobileNo"]').value);
-            formData.append('journeyType', journeyType);
+
             formData.append('incidentDate', document.querySelector('input[name="incidentDate"]').value);
             formData.append('grievanceDescription', document.querySelector('textarea[name="grievanceDescription"]').value);
-            formData.append('pnr', pnr); 
-            formData.append('uts', uts); 
-            formData.append('trainNo', trainNo); 
+            formData.append('pnr', pnr);
+
+
             formData.append('latitude', latitude || '');
-            formData.append('longitude', longitude || ''); 
+            formData.append('longitude', longitude || '');
 
             if (file) {
                 formData.append('file', file);
             }
 
             try {
-                const response = await fetch('http://localhost:5000/submit_grievance', {
+                const response = await fetch('http://localhost:5000/grievance/submit', {
                     method: 'POST',
                     body: formData,
                 });
@@ -61,7 +60,7 @@ const GrievanceDetailForm = () => {
                 const result = await response.json();
                 if (response.ok) {
                     alert(result.message);
-                    console.log('Train details:', result.train_details); 
+                    console.log('Train details:', result.train_details);
                 } else {
                     alert(`Error: ${result.error || 'An error occurred. Please try again.'}`);
                 }
@@ -69,84 +68,31 @@ const GrievanceDetailForm = () => {
                 console.error('Error:', error);
                 alert('An error occurred. Please try again.');
             }
-        }, 1000); 
+        }, 1000);
     };
 
     return (
         <div className="flex">
-            <div className="bg-white relative" style={{width:'650px'}}>
+            <div className="bg-white relative" style={{ width: '650px' }}>
                 <h2 className="text-2xl font-semibold mb-4 text-[#800020]">Grievance Detail</h2>
 
                 <form onSubmit={handleSubmit}>
-                    {/* <div className="grid grid-cols-2 gap-4"> */}
-                        {/* <div className="col-span-2">
-                            <label className="block text-sm font-medium mb-1">Mobile No.</label>
-                            <div className="flex">
-                                <input
-                                    name="mobileNo"
-                                    type="text"
-                                    className="border border-gray-300 rounded-l px-4 py-2 w-full"
-                                    placeholder="Enter your mobile number"
-                                />
-                                <button className="bg-[#800020] text-white px-4 py-2 rounded-r">Get OTP</button>
-                            </div>
-                        </div> */}
 
-                        {/* <div>
-                            <label className="block text-sm font-medium mb-1">Journey Details</label>
-                            <select
+
+                    {journeyType === 'PNR' && (
+                        <div>
+                            <label className="block text-sm font-medium mb-1">PNR No.</label>
+                            <input
+                                type="text"
                                 className="border border-gray-300 rounded px-4 py-2 w-full"
-                                value={journeyType}
-                                onChange={(e) => {
-                                    setJourneyType(e.target.value);
-                                    setPnr(''); 
-                                    setUts(''); 
-                                    setTrainNo(''); 
-                                }}
-                            >
-                                <option value="PNR">PNR</option>
-                                <option value="UTS">UTS</option>
-                            </select>
-                        </div> */}
+                                placeholder="Enter PNR"
+                                value={pnr}
+                                onChange={(e) => setPnr(e.target.value)}
+                            />
+                        </div>
+                    )}
 
-                        {journeyType === 'PNR' && (
-                            <div>
-                                <label className="block text-sm font-medium mb-1">PNR No.</label>
-                                <input
-                                    type="text"
-                                    className="border border-gray-300 rounded px-4 py-2 w-full"
-                                    placeholder="Enter PNR"
-                                    value={pnr}
-                                    onChange={(e) => setPnr(e.target.value)}
-                                />
-                            </div>
-                        )}
 
-                        {/* {journeyType === 'UTS' && (
-                            <>
-                                <div>
-                                    <label className="block text-sm font-medium mb-1">UTS No.</label>
-                                    <input
-                                        type="text"
-                                        className="border border-gray-300 rounded px-4 py-2 w-full"
-                                        placeholder="Enter UTS"
-                                        value={uts}
-                                        onChange={(e) => setUts(e.target.value)}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium mb-1">Train No.</label>
-                                    <input
-                                        type="text"
-                                        className="border border-gray-300 rounded px-4 py-2 w-full"
-                                        placeholder="Enter Train No."
-                                        value={trainNo}
-                                        onChange={(e) => setTrainNo(e.target.value)}
-                                    />
-                                </div>
-                            </>
-                        )} */}
-                    {/* </div> */}
 
                     <div className="mt-4">
                         <label className="block text-sm font-medium mb-1">Incident Date</label>
