@@ -19,13 +19,19 @@ const Home = () => {
     return (
         <div
             className="min-h-screen flex flex-col bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(background.png)` }}
+            style={{ backgroundImage: `url(image.jpg)` }}
         >
             <Header />
-            <div className="flex flex-1 justify-end mt-11 mr-16 mb-11"> 
-                <div className="flex"> 
-                    <Sidebar setActiveForm={setActiveForm} />
-                    <div className="flex-1 p-8 bg-white shadow-md">
+            <div className="flex flex-1 justify-start mt-3 mr-16 mb-11">
+                <div className="w-full lg:w-1/2 p-6 mr-40 ml-10">
+                    <h1 className="text-8xl font-bold text-white mt-10">Helping Railways Help Travellers</h1>
+                    <p className="mt-4  text-4xl text-white">
+                        See how our AI enabled platform helps travellers lodge a complaint and IRCTC resolve it faster than ever before!
+                    </p>
+                </div>
+                <div className="flex ml-20">
+                    {/* <Sidebar setActiveForm={setActiveForm} /> */}
+                    <div >
                         {renderForm()}
                     </div>
                 </div>

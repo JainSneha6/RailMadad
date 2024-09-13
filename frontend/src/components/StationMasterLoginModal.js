@@ -16,7 +16,7 @@ const StationMasterLoginModal = ({ onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-55 modal-enter">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-55 modal-enter" style={{ zIndex: '1000' }}>
             <div className="bg-white rounded-lg p-6 w-full max-w-2xl transition-transform transform scale-95 modal-enter">
                 <div className="flex justify-between items-center">
                     <h2 className="text-lg font-bold">Station Master LOGIN</h2>
@@ -39,7 +39,7 @@ const StationMasterLoginModal = ({ onClose }) => {
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-maroon text-white p-2 rounded mt-2 hover:bg-orange-400"
+                        className="w-full bg-black text-white p-2 rounded mt-2 hover:bg-gray-500"
                     >
                         Sign In
                     </button>

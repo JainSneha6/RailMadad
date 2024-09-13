@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const GrievanceDetailForm = () => {
     const [journeyType, setJourneyType] = useState('PNR');
     const [file, setFile] = useState(null);
     const [pnr, setPnr] = useState('');
-    const [uts, setUts] = useState('');
-    const [trainNo, setTrainNo] = useState('');
+    const [selectedDate, setSelectedDate] = useState(null);
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
+    const [activeForm, setActiveForm] = useState('train'); // For navigation control
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -39,11 +41,9 @@ const GrievanceDetailForm = () => {
         setTimeout(async () => {
             const formData = new FormData();
 
-            formData.append('incidentDate', document.querySelector('input[name="incidentDate"]').value);
+            formData.append('incidentDate', selectedDate ? selectedDate.toISOString() : '');
             formData.append('grievanceDescription', document.querySelector('textarea[name="grievanceDescription"]').value);
             formData.append('pnr', pnr);
-
-
             formData.append('latitude', latitude || '');
             formData.append('longitude', longitude || '');
 
@@ -72,19 +72,40 @@ const GrievanceDetailForm = () => {
     };
 
     return (
-        <div className="flex">
-            <div className="bg-white relative" style={{ width: '650px' }}>
-                <h2 className="text-2xl font-semibold mb-4 text-[#800020]">Grievance Detail</h2>
+        <div className="flex flex-col items-start">
+            {/* Top Navigation Bar */}
+            <div className="flex items-center justify-around bg-black shadow-md w-full rounded-t-lg" style={{ width: '320px' }}>
+                <div
+                    className={`px-4 py-2 cursor-pointer text-md font-semibold ${activeForm === 'train' ? 'text-black bg-white rounded-t-lg' : 'text-white hover:bg-gray-200 rounded-t-lg'}`}
+                    onClick={() => setActiveForm('train')}
+                >
+                    Grievance
+                </div>
+                <div
+                    className={`px-4 py-2 cursor-pointer text-md font-semibold ${activeForm === 'appreciation' ? 'text-black bg-white rounded-t-lg' : 'text-white hover:bg-gray-200 rounded-t-lg'}`}
+                    onClick={() => setActiveForm('appreciation')}
+                >
+                    Appreciation
+                </div>
+                <div
+                    className={`px-4 py-2 cursor-pointer text-md font-semibold ${activeForm === 'trackConcern' ? 'text-black bg-white rounded-t-lg' : 'text-white hover:bg-gray-200 rounded-t-lg'}`}
+                    onClick={() => setActiveForm('trackConcern')}
+                >
+                    Concern
+                </div>
+            </div>
+
+            {/* Form Section */}
+            <div className="bg-white shadow-lg p-8" style={{ width: '800px', height: '700px' }}>
+                <h2 className="text-2xl font-semibold mb-6 text-[#800020]">Grievance Detail</h2>
 
                 <form onSubmit={handleSubmit}>
-
-
                     {journeyType === 'PNR' && (
                         <div>
-                            <label className="block text-sm font-medium mb-1">PNR No.</label>
+                            <label className="block text-sm font-medium mb-2">PNR No.</label>
                             <input
                                 type="text"
-                                className="border border-gray-300 rounded px-4 py-2 w-full"
+                                className="border border-gray-300 rounded-lg px-4 py-2 w-full"
                                 placeholder="Enter PNR"
                                 value={pnr}
                                 onChange={(e) => setPnr(e.target.value)}
@@ -92,66 +113,83 @@ const GrievanceDetailForm = () => {
                         </div>
                     )}
 
-
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-medium mb-1">Incident Date</label>
-                        <input
-                            name="incidentDate"
-                            type="datetime-local"
-                            className="border border-gray-300 rounded px-4 py-2 w-full"
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block text-sm font-medium mb-1">Upload File (Optional)</label>
-                        <input
-                            type="file"
-                            className="border border-gray-300 rounded px-4 py-2 w-full"
-                            onChange={handleFileChange}
-                        />
-                    </div>
-
-                    <div className="col-span-2 mt-4">
-                        <label className="block text-sm font-medium mb-1">Grievance Description</label>
+                    <div className="mt-6">
+                        <label className="block text-sm font-medium mb-2">Grievance Description</label>
                         <textarea
                             name="grievanceDescription"
-                            className="border border-gray-300 rounded px-4 py-2 w-full"
+                            className="border border-gray-300 rounded-lg px-4 py-2 w-full"
                             placeholder="Enter your grievance"
                             rows="4"
                         ></textarea>
                     </div>
 
-                    <div className="flex justify-end space-x-4 mt-6">
+                    <div className="mt-6 flex space-x-4">
+                        <div className="w-1/2">
+                            <label className="block text-sm font-medium mb-2">Incident Date and Time</label>
+                            <div className="relative">
+                                <DatePicker
+                                    selected={selectedDate}
+                                    onChange={(date) => setSelectedDate(date)}
+                                    showTimeSelect
+                                    timeFormat="HH:mm"
+                                    timeIntervals={15}
+                                    dateFormat="yyyy-MM-dd HH:mm"
+                                    className="border border-gray-300 rounded-lg mr-10 px-8 py-2 w-full"
+                                    placeholderText="Select date and time"
+                                    calendarClassName="custom-calendar"
+                                    style={{ zIndex: 10 }}
+                                    open={true}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="w-1/2">
+                            <label className="block text-sm font-medium mb-2">Upload File (Optional)</label>
+                            <div className="border border-gray-300 rounded-lg px-4 py-20 flex flex-col items-center justify-center text-center cursor-pointer mb-18">
+                                <div className="mb-2">
+                                    <i className="fas fa-file-upload text-gray-500 text-4xl"></i>
+                                </div>
+                                <p className="text-gray-500">
+                                    Drag & Drop or{' '}
+                                    <a href="#" className="text-blue-500 hover:underline" onClick={() => document.getElementById('fileInput').click()}>
+                                        Choose a file
+                                    </a>
+                                </p>
+                                <input
+                                    id="fileInput"
+                                    type="file"
+                                    className="hidden"
+                                    onChange={handleFileChange}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-end space-x-4 mt-8">
                         <button
                             type="button"
-                            className="bg-gray-500 text-white px-4 py-2 rounded"
+                            className="bg-gray-500 text-white px-6 py-2 rounded-lg"
                             onClick={() => {
                                 document.querySelector('form').reset();
                                 setFile(null);
                                 setPnr('');
-                                setUts('');
-                                setTrainNo('');
                                 setLatitude(null);
                                 setLongitude(null);
+                                setSelectedDate(null); // Reset the date
                             }}
                         >
                             Reset
                         </button>
                         <button
                             type="submit"
-                            className="bg-[#800020] text-white px-4 py-2 rounded"
+                            className="bg-black text-white px-6 py-2 rounded-lg"
                         >
                             Submit
                         </button>
                     </div>
                 </form>
-
-                <div className="absolute top-4 right-4 text-xs text-gray-600">
-                    *Mandatory Fields
-                </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
