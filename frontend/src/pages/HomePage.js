@@ -23,9 +23,9 @@ const Home = () => {
         >
             <Header />
             <div className="flex flex-1 justify-start mt-3 mr-16 mb-11">
-                <div className="w-full lg:w-1/2 p-6 mr-40 ml-10">
-                    <h1 className="text-8xl font-bold text-white mt-10">Helping Railways Help Travellers</h1>
-                    <p className="mt-4  text-4xl text-white">
+                <div className="w-full lg:w-1/2 p- mr4-40 ml-10">
+                    <h1 className="text-6xl font-bold text-white mt-10">Helping Railways Help Travellers</h1>
+                    <p className="mt-4  text-2xl text-white">
                         See how our AI enabled platform helps travellers lodge a complaint and IRCTC resolve it faster than ever before!
                     </p>
                 </div>

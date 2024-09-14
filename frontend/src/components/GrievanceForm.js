@@ -41,7 +41,7 @@ const GrievanceDetailForm = () => {
         setTimeout(async () => {
             const formData = new FormData();
 
-            formData.append('incidentDate', selectedDate ? selectedDate.toISOString() : '');
+            // formData.append('incidentDate', selectedDate ? selectedDate.toISOString() : '');
             formData.append('grievanceDescription', document.querySelector('textarea[name="grievanceDescription"]').value);
             formData.append('pnr', pnr);
             formData.append('latitude', latitude || '');
@@ -96,7 +96,7 @@ const GrievanceDetailForm = () => {
             </div>
 
             {/* Form Section */}
-            <div className="bg-white shadow-lg p-8" style={{ width: '800px', height: '700px' }}>
+            <div className="bg-white shadow-lg p-8" style={{ width: '700px', height: '700px' }}>
                 <h2 className="text-2xl font-semibold mb-6 text-[#800020]">Grievance Detail</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -124,7 +124,7 @@ const GrievanceDetailForm = () => {
                     </div>
 
                     <div className="mt-6 flex space-x-4">
-                        <div className="w-1/2">
+                        {/* <div className="w-1/2">
                             <label className="block text-sm font-medium mb-2">Incident Date and Time</label>
                             <div className="relative">
                                 <DatePicker
@@ -141,7 +141,7 @@ const GrievanceDetailForm = () => {
                                     open={true}
                                 />
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="w-1/2">
                             <label className="block text-sm font-medium mb-2">Upload File (Optional)</label>

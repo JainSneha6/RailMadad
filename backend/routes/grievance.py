@@ -74,7 +74,7 @@ def create_grievance_blueprint(grievance_collection, upload_folder):
 
     def insert_grievance_to_mongo(data, trainNo, train_details, priority, department_type, department_subtype, file_path=None):
         grievance_data = {
-            "incidentDate": data.get("incidentDate"),
+            
             "file": file_path,
             "grievanceDescription": data.get("grievanceDescription"),
             "pnr": data.get("pnr"),
@@ -199,7 +199,7 @@ def create_grievance_blueprint(grievance_collection, upload_folder):
         complaints_list = []
         for complaint in complaints:
             complaint_data = {
-                "incidentDate": complaint.get("incidentDate"),
+                
                 "file": complaint.get("file"),
                 "grievanceDescription": complaint.get("grievanceDescription"),
                 "pnr": complaint.get("pnr"),

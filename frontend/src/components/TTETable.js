@@ -21,18 +21,18 @@ const TTETable = ({ grievances, trainNo }) => {
 
     // Define headers conditionally
     const headers = [
-        'ID', 
-        'Incident Date', 
-        'File', 
-        'Description', 
-        'PNR', 
-        ...(trainNo ? ['Train No'] : []), 
-        'Coach', 
-        'Seat', 
-        'Department Type', 
-        'Department Subtype', 
-        'Priority', 
-        'Chat', 
+        'ID',
+
+        'File',
+        'Description',
+        'PNR',
+        ...(trainNo ? ['Train No'] : []),
+        'Coach',
+        'Seat',
+        'Department Type',
+        'Department Subtype',
+        'Priority',
+        'Chat',
         'Steps'
     ];
 
@@ -53,7 +53,7 @@ const TTETable = ({ grievances, trainNo }) => {
                     {grievances.map((grievance, index) => (
                         <tr key={index} className="hover:bg-gray-50">
                             <td className="px-2 py-1 whitespace-nowrap text-gray-800">{index + 1}</td>
-                            <td className="px-2 py-1 whitespace-nowrap text-gray-600">{new Date(grievance.incidentDate).toLocaleString()}</td>
+                            {/* <td className="px-2 py-1 whitespace-nowrap text-gray-600">{new Date(grievance.incidentDate).toLocaleString()}</td> */}
                             <td className="px-2 py-1 whitespace-nowrap text-gray-600">
                                 {grievance.file ? <a href={`/${grievance.file}`} className="text-blue-600 hover:underline">View File</a> : 'N/A'}
                             </td>
