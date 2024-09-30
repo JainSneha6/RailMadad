@@ -12,7 +12,7 @@ def transcribe_audio(audio_path):
     with sr.AudioFile(audio_path) as source:
         audio = recognizer.record(source)
         try:
-            # Use Google Web Speech API for transcription (or replace with other recognizers)
+
             text = recognizer.recognize_google(audio)
             return text
         except sr.UnknownValueError:

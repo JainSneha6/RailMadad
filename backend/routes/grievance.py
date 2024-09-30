@@ -6,7 +6,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 import re
-
 import csv
 
 # Initialize Google Generative AI model
@@ -15,8 +14,6 @@ llm = ChatGoogleGenerativeAI(api_key=api_key, model='gemini-pro')
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-1.5-flash')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf'}
-
-
 
 def create_grievance_blueprint(grievance_collection, upload_folder):
     grievance_bp = Blueprint('grievance', __name__)

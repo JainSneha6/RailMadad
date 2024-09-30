@@ -12,7 +12,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'pdf'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize MongoDB client
-client = MongoClient("mongodb+srv://jainsnehasj6:6T9znFXUJZ3rplpi@railmadad.z17a9.mongodb.net/")
+client = MongoClient("YOUR MONGODB URL")
 db = client['train_grievances']
 grievance_collection = db['grievances']
 admin_collection = db['admins']
